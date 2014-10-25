@@ -1,0 +1,851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EAB38627-A8C8-4420-ADBD-0EC8613BE672}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LogToday.LogToday</RootNamespace>
+    <AssemblyName>TG.LogToday</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGrid.SmtpApi">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.1.3\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail">
+      <HintPath>..\packages\Sendgrid.4.0.0\lib\SendGridMail.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Api">
+      <HintPath>..\packages\Twilio.3.6.17\lib\3.5\Twilio.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Mvc">
+      <HintPath>..\packages\Twilio.Mvc.3.1.12\lib\3.5\Twilio.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Twiml">
+      <HintPath>..\packages\Twilio.TwiML.3.3.3\lib\3.5\Twilio.Twiml.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\ClaimsAdminController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\TimerController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Entities\Mapping\ClaimsMap.cs" />
+    <Compile Include="Entities\Mapping\ClientMap.cs" />
+    <Compile Include="Filters\ClaimsAuthorize.cs" />
+    <Compile Include="Identity\ApplicationCookieIdentityValidator.cs" />
+    <Compile Include="Identity\ApplicationRoleManager.cs" />
+    <Compile Include="Identity\ApplicationSignInManager.cs" />
+    <Compile Include="Identity\EmailService.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Identity\SmsService.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Entities\ApplicationDbContext.cs" />
+    <Compile Include="Entities\Claims.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Identity\ApplicationUser.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ClaimViewModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\ScheduleIndexViewModel.cs" />
+    <Compile Include="Models\TimerIndexViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\app\views.schedule.index.css" />
+    <Content Include="assets\css\coming-soon-social.css" />
+    <Content Include="assets\css\icomoon-social.css" />
+    <Content Include="assets\css\leaflet.css" />
+    <Content Include="assets\css\leaflet.ie.css" />
+    <Content Include="assets\css\main-green.css" />
+    <Content Include="assets\css\main-grey.css" />
+    <Content Include="assets\css\main-orange.css" />
+    <Content Include="assets\css\main-red.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\app\views.timer.index.css" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\img\8962691008_7f489395c9_m.jpg" />
+    <Content Include="assets\img\8985207189_01ea27882d_m.jpg" />
+    <Content Include="assets\img\9036958611_fa1bb7f827_m.jpg" />
+    <Content Include="assets\img\9041440555_2175b32078_m.jpg" />
+    <Content Include="assets\img\avatar.jpg" />
+    <Content Include="assets\img\chevron-left.png" />
+    <Content Include="assets\img\chevron-right.png" />
+    <Content Include="assets\img\devoops_getdata.gif" />
+    <Content Include="assets\img\devoops_pattern_b10.png" />
+    <Content Include="assets\img\logo-200.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\sort-asc.png" />
+    <Content Include="assets\img\sort-desc.png" />
+    <Content Include="assets\img\sort.png" />
+    <Content Include="assets\img\times.png" />
+    <Content Include="assets\img\ui-accordion-down.png" />
+    <Content Include="assets\img\ui-accordion-right.png" />
+    <Content Include="assets\img\ui-left.png" />
+    <Content Include="assets\img\ui-right.png" />
+    <Content Include="assets\js\app\core.fullcalendar.lang.pt-br.js" />
+    <Content Include="assets\js\app\views.schedule.index.js" />
+    <Content Include="assets\js\devoops.js" />
+    <Content Include="assets\js\template.js" />
+    <Content Include="assets\js\app\views.timer.index.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="plugins\bootstrapvalidator\bootstrapValidator.css" />
+    <Content Include="plugins\bootstrapvalidator\bootstrapValidator.js" />
+    <Content Include="plugins\bootstrapvalidator\bootstrapValidator.min.css" />
+    <Content Include="plugins\bootstrapvalidator\bootstrapValidator.min.js" />
+    <Content Include="plugins\bootstrapvalidator\language\ar_MA.js" />
+    <Content Include="plugins\bootstrapvalidator\language\be_FR.js" />
+    <Content Include="plugins\bootstrapvalidator\language\be_NL.js" />
+    <Content Include="plugins\bootstrapvalidator\language\bg_BG.js" />
+    <Content Include="plugins\bootstrapvalidator\language\cs_CZ.js" />
+    <Content Include="plugins\bootstrapvalidator\language\da_DK.js" />
+    <Content Include="plugins\bootstrapvalidator\language\de_DE.js" />
+    <Content Include="plugins\bootstrapvalidator\language\en_US.js" />
+    <Content Include="plugins\bootstrapvalidator\language\es_CL.js" />
+    <Content Include="plugins\bootstrapvalidator\language\es_ES.js" />
+    <Content Include="plugins\bootstrapvalidator\language\fa_IR.js" />
+    <Content Include="plugins\bootstrapvalidator\language\fr_FR.js" />
+    <Content Include="plugins\bootstrapvalidator\language\gr_EL.js" />
+    <Content Include="plugins\bootstrapvalidator\language\hu_HU.js" />
+    <Content Include="plugins\bootstrapvalidator\language\it_IT.js" />
+    <Content Include="plugins\bootstrapvalidator\language\ja_JP.js" />
+    <Content Include="plugins\bootstrapvalidator\language\nl_NL.js" />
+    <Content Include="plugins\bootstrapvalidator\language\no_NO.js" />
+    <Content Include="plugins\bootstrapvalidator\language\pl_PL.js" />
+    <Content Include="plugins\bootstrapvalidator\language\pt_BR.js" />
+    <Content Include="plugins\bootstrapvalidator\language\ro_RO.js" />
+    <Content Include="plugins\bootstrapvalidator\language\ru_RU.js" />
+    <Content Include="plugins\bootstrapvalidator\language\sr_RS.js" />
+    <Content Include="plugins\bootstrapvalidator\language\sv_SE.js" />
+    <Content Include="plugins\bootstrapvalidator\language\th_TH.js" />
+    <Content Include="plugins\bootstrapvalidator\language\tr_TR.js" />
+    <Content Include="plugins\bootstrapvalidator\language\ua_UA.js" />
+    <Content Include="plugins\bootstrapvalidator\language\vi_VN.js" />
+    <Content Include="plugins\bootstrapvalidator\language\zh_CN.js" />
+    <Content Include="plugins\bootstrapvalidator\language\zh_TW.js" />
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="plugins\d3\d3.js" />
+    <Content Include="plugins\d3\d3.min.js" />
+    <Content Include="plugins\datatables\copy_csv_xls_pdf.swf" />
+    <Content Include="plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="plugins\datatables\jquery.dataTables.js" />
+    <Content Include="plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="plugins\datatables\TableTools.js" />
+    <Content Include="plugins\datatables\TableTools_orig.js" />
+    <Content Include="plugins\datatables\ZeroClipboard.js" />
+    <Content Include="plugins\fancybox\blank.gif" />
+    <Content Include="plugins\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="plugins\fancybox\fancybox_loading.gif" />
+    <Content Include="plugins\fancybox\fancybox_overlay.png" />
+    <Content Include="plugins\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="plugins\fancybox\fancybox_sprite.png" />
+    <Content Include="plugins\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="plugins\fancybox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="plugins\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="plugins\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="plugins\fancybox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="plugins\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="plugins\fancybox\jquery.fancybox.css" />
+    <Content Include="plugins\fancybox\jquery.fancybox.js" />
+    <Content Include="plugins\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="plugins\fineuploader\edit.gif" />
+    <Content Include="plugins\fineuploader\fineuploader-5.0.5.css" />
+    <Content Include="plugins\fineuploader\fineuploader-5.0.5.js" />
+    <Content Include="plugins\fineuploader\fineuploader-5.0.5.min.css" />
+    <Content Include="plugins\fineuploader\fineuploader-5.0.5.min.js" />
+    <Content Include="plugins\fineuploader\iframe.xss.response-5.0.5.js" />
+    <Content Include="plugins\fineuploader\jquery.fineuploader-5.0.5.js" />
+    <Content Include="plugins\fineuploader\jquery.fineuploader-5.0.5.min.js" />
+    <Content Include="plugins\fineuploader\loading.gif" />
+    <Content Include="plugins\fineuploader\processing.gif" />
+    <Content Include="plugins\flot\jquery.flot.js" />
+    <Content Include="plugins\flot\jquery.flot.resize.js" />
+    <Content Include="plugins\flot\jquery.flot.time.js" />
+    <Content Include="plugins\flot\LICENSE.txt" />
+    <Content Include="plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="plugins\fullcalendar\fullcalendar.js" />
+    <Content Include="plugins\fullcalendar\fullcalendar.min.css" />
+    <Content Include="plugins\fullcalendar\fullcalendar.min.js" />
+    <Content Include="plugins\fullcalendar\fullcalendar.print.css" />
+    <Content Include="plugins\fullcalendar\gcal.js" />
+    <Content Include="plugins\fullcalendar\lang-all.js" />
+    <Content Include="plugins\fullcalendar\lang\ar-ma.js" />
+    <Content Include="plugins\fullcalendar\lang\ar-sa.js" />
+    <Content Include="plugins\fullcalendar\lang\ar.js" />
+    <Content Include="plugins\fullcalendar\lang\bg.js" />
+    <Content Include="plugins\fullcalendar\lang\ca.js" />
+    <Content Include="plugins\fullcalendar\lang\cs.js" />
+    <Content Include="plugins\fullcalendar\lang\da.js" />
+    <Content Include="plugins\fullcalendar\lang\de-at.js" />
+    <Content Include="plugins\fullcalendar\lang\de.js" />
+    <Content Include="plugins\fullcalendar\lang\el.js" />
+    <Content Include="plugins\fullcalendar\lang\en-au.js" />
+    <Content Include="plugins\fullcalendar\lang\en-ca.js" />
+    <Content Include="plugins\fullcalendar\lang\en-gb.js" />
+    <Content Include="plugins\fullcalendar\lang\es.js" />
+    <Content Include="plugins\fullcalendar\lang\fa.js" />
+    <Content Include="plugins\fullcalendar\lang\fi.js" />
+    <Content Include="plugins\fullcalendar\lang\fr-ca.js" />
+    <Content Include="plugins\fullcalendar\lang\fr.js" />
+    <Content Include="plugins\fullcalendar\lang\hi.js" />
+    <Content Include="plugins\fullcalendar\lang\hr.js" />
+    <Content Include="plugins\fullcalendar\lang\hu.js" />
+    <Content Include="plugins\fullcalendar\lang\id.js" />
+    <Content Include="plugins\fullcalendar\lang\is.js" />
+    <Content Include="plugins\fullcalendar\lang\it.js" />
+    <Content Include="plugins\fullcalendar\lang\ja.js" />
+    <Content Include="plugins\fullcalendar\lang\ko.js" />
+    <Content Include="plugins\fullcalendar\lang\lt.js" />
+    <Content Include="plugins\fullcalendar\lang\lv.js" />
+    <Content Include="plugins\fullcalendar\lang\nl.js" />
+    <Content Include="plugins\fullcalendar\lang\pl.js" />
+    <Content Include="plugins\fullcalendar\lang\pt-br.js" />
+    <Content Include="plugins\fullcalendar\lang\pt.js" />
+    <Content Include="plugins\fullcalendar\lang\ro.js" />
+    <Content Include="plugins\fullcalendar\lang\ru.js" />
+    <Content Include="plugins\fullcalendar\lang\sk.js" />
+    <Content Include="plugins\fullcalendar\lang\sl.js" />
+    <Content Include="plugins\fullcalendar\lang\sr-cyrl.js" />
+    <Content Include="plugins\fullcalendar\lang\sr.js" />
+    <Content Include="plugins\fullcalendar\lang\sv.js" />
+    <Content Include="plugins\fullcalendar\lang\th.js" />
+    <Content Include="plugins\fullcalendar\lang\tr.js" />
+    <Content Include="plugins\fullcalendar\lang\uk.js" />
+    <Content Include="plugins\fullcalendar\lang\vi.js" />
+    <Content Include="plugins\fullcalendar\lang\zh-cn.js" />
+    <Content Include="plugins\fullcalendar\lang\zh-tw.js" />
+    <Content Include="plugins\fullcalendar\license.txt" />
+    <Content Include="plugins\jQuery-Knob\jquery.knob.js" />
+    <Content Include="plugins\jQuery-Knob\jquery.knob.min.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-addon-i18n.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-addon-i18n.min.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-af.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-am.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-bg.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ca.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-cs.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-da.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-de.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-el.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-es.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-et.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-eu.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-fi.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-fr.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-gl.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-he.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-hr.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-hu.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-id.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-it.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ja.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ko.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-lt.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-nl.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-no.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-pl.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-pt-BR.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-pt.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ro.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ru.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sk.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sl.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sr-RS.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sr-YU.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sv.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-th.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-tr.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-uk.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-vi.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-zh-CN.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-zh-TW.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\index.html" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\jquery-ui-sliderAccess.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.css" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.js" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.min.css" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery-ui-i18n.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-af.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ar-DZ.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ar.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-az.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-be.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-bg.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-bs.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ca.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-cs.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-cy-GB.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-da.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-de.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-el.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-en-AU.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-en-GB.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-en-NZ.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-eo.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-es.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-et.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-eu.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-fa.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-fi.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-fo.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-fr-CA.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-fr-CH.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-fr.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-gl.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-he.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-hi.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-hr.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-hu.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-hy.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-id.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-is.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-it.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ja.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ka.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-kk.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-km.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ko.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ky.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-lb.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-lt.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-lv.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-mk.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ml.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ms.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-nb.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-nl-BE.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-nl.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-nn.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-no.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-pl.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-pt-BR.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-pt.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-rm.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ro.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ru.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-sk.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-sl.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-sq.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-sr-SR.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-sr.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-sv.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-ta.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-th.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-tj.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-tr.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-uk.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-vi.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-zh-CN.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-zh-HK.min.js" />
+    <Content Include="plugins\jquery-ui\i18n\jquery.ui.datepicker-zh-TW.min.js" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="plugins\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="plugins\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="plugins\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="plugins\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="plugins\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="plugins\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="plugins\jquery-ui\jquery-ui.css" />
+    <Content Include="plugins\jquery-ui\jquery-ui.js" />
+    <Content Include="plugins\jquery-ui\jquery-ui.min.css" />
+    <Content Include="plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="plugins\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="plugins\bootstrap\css\bootstrap.css.map" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="plugins\jquery\jquery-2.1.1.intellisense.js" />
+    <Content Include="plugins\jquery\jquery-2.1.1.js" />
+    <Content Include="plugins\jquery\jquery-2.1.1.min.js" />
+    <Content Include="plugins\justified-gallery\jquery.justifiedGallery.js" />
+    <Content Include="plugins\justified-gallery\jquery.justifiedGallery.min.js" />
+    <Content Include="plugins\justified-gallery\justifiedGallery.css" />
+    <Content Include="plugins\justified-gallery\justifiedGallery.min.css" />
+    <Content Include="plugins\knockout\knockout-3.2.0.debug.js" />
+    <Content Include="plugins\knockout\knockout-3.2.0.js" />
+    <Content Include="plugins\moment\moment-with-locales.js" />
+    <Content Include="plugins\moment\moment-with-locales.min.js" />
+    <Content Include="plugins\moment\moment.js" />
+    <Content Include="plugins\moment\moment.min.js" />
+    <Content Include="plugins\morris\morris.js" />
+    <Content Include="plugins\morris\morris.min.js" />
+    <Content Include="plugins\raphael\raphael-min.js" />
+    <Content Include="plugins\raphael\raphael.js" />
+    <Content Include="plugins\select2\select2-bootstrap.css" />
+    <Content Include="plugins\select2\select2-spinner.gif" />
+    <Content Include="plugins\select2\select2.css" />
+    <Content Include="plugins\select2\select2.js" />
+    <Content Include="plugins\select2\select2.min.js" />
+    <Content Include="plugins\select2\select2.png" />
+    <Content Include="plugins\select2\select2x2.png" />
+    <Content Include="plugins\select2\select2_locale_ar.js" />
+    <Content Include="plugins\select2\select2_locale_az.js" />
+    <Content Include="plugins\select2\select2_locale_bg.js" />
+    <Content Include="plugins\select2\select2_locale_ca.js" />
+    <Content Include="plugins\select2\select2_locale_cs.js" />
+    <Content Include="plugins\select2\select2_locale_da.js" />
+    <Content Include="plugins\select2\select2_locale_de.js" />
+    <Content Include="plugins\select2\select2_locale_el.js" />
+    <Content Include="plugins\select2\select2_locale_es.js" />
+    <Content Include="plugins\select2\select2_locale_et.js" />
+    <Content Include="plugins\select2\select2_locale_eu.js" />
+    <Content Include="plugins\select2\select2_locale_fa.js" />
+    <Content Include="plugins\select2\select2_locale_fi.js" />
+    <Content Include="plugins\select2\select2_locale_fr.js" />
+    <Content Include="plugins\select2\select2_locale_gl.js" />
+    <Content Include="plugins\select2\select2_locale_he.js" />
+    <Content Include="plugins\select2\select2_locale_hr.js" />
+    <Content Include="plugins\select2\select2_locale_hu.js" />
+    <Content Include="plugins\select2\select2_locale_id.js" />
+    <Content Include="plugins\select2\select2_locale_is.js" />
+    <Content Include="plugins\select2\select2_locale_it.js" />
+    <Content Include="plugins\select2\select2_locale_ja.js" />
+    <Content Include="plugins\select2\select2_locale_ka.js" />
+    <Content Include="plugins\select2\select2_locale_ko.js" />
+    <Content Include="plugins\select2\select2_locale_lt.js" />
+    <Content Include="plugins\select2\select2_locale_lv.js" />
+    <Content Include="plugins\select2\select2_locale_mk.js" />
+    <Content Include="plugins\select2\select2_locale_ms.js" />
+    <Content Include="plugins\select2\select2_locale_nl.js" />
+    <Content Include="plugins\select2\select2_locale_no.js" />
+    <Content Include="plugins\select2\select2_locale_pl.js" />
+    <Content Include="plugins\select2\select2_locale_pt-BR.js" />
+    <Content Include="plugins\select2\select2_locale_pt-PT.js" />
+    <Content Include="plugins\select2\select2_locale_ro.js" />
+    <Content Include="plugins\select2\select2_locale_rs.js" />
+    <Content Include="plugins\select2\select2_locale_ru.js" />
+    <Content Include="plugins\select2\select2_locale_sk.js" />
+    <Content Include="plugins\select2\select2_locale_sv.js" />
+    <Content Include="plugins\select2\select2_locale_th.js" />
+    <Content Include="plugins\select2\select2_locale_tr.js" />
+    <Content Include="plugins\select2\select2_locale_ua.js" />
+    <Content Include="plugins\select2\select2_locale_ug-CN.js" />
+    <Content Include="plugins\select2\select2_locale_uk.js" />
+    <Content Include="plugins\select2\select2_locale_vi.js" />
+    <Content Include="plugins\select2\select2_locale_zh-CN.js" />
+    <Content Include="plugins\select2\select2_locale_zh-TW.js" />
+    <Content Include="plugins\sparkline\jquery.sparkline.js" />
+    <Content Include="plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="plugins\tinymce\jquery.tinymce.min.js" />
+    <Content Include="plugins\tinymce\license.txt" />
+    <Content Include="plugins\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="plugins\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\example\dialog.html" />
+    <Content Include="plugins\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="plugins\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="plugins\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="plugins\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="plugins\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="plugins\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce-small.dev.svg" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.dev.svg" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="plugins\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="plugins\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="plugins\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="plugins\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="plugins\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="plugins\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="plugins\tinymce\themes\modern\theme.min.js" />
+    <Content Include="plugins\tinymce\tinymce.min.js" />
+    <Content Include="plugins\xcharts\xcharts.css" />
+    <Content Include="plugins\xcharts\xcharts.js" />
+    <Content Include="plugins\xcharts\xcharts.min.css" />
+    <Content Include="plugins\xcharts\xcharts.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="plugins\bootstrapvalidator\README.md" />
+    <Content Include="plugins\d3\LICENSE" />
+    <Content Include="plugins\fancybox\README.md" />
+    <Content Include="plugins\fineuploader\LICENSE" />
+    <Content Include="plugins\jQuery-Knob\LICENSE" />
+    <Content Include="plugins\jquery-ui-timepicker-addon\LICENSE-MIT" />
+    <Content Include="plugins\justified-gallery\README.md" />
+    <Content Include="plugins\moment\LICENSE" />
+    <Content Include="plugins\select2\bower.json" />
+    <Content Include="plugins\select2\component.json" />
+    <Content Include="plugins\select2\composer.json" />
+    <Content Include="plugins\select2\LICENSE" />
+    <Content Include="plugins\select2\package.json" />
+    <Content Include="plugins\select2\README.md" />
+    <Content Include="plugins\select2\release.sh" />
+    <Content Include="plugins\select2\select2.jquery.json" />
+    <Content Include="plugins\select2\select2_locale_en.js.template" />
+    <Content Include="plugins\tinymce\langs\readme.md" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="plugins\xcharts\LICENSE" />
+    <Content Include="plugins\xcharts\README.md" />
+    <Content Include="plugins\jquery\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.2.0.debug.js" />
+    <Content Include="Scripts\knockout-3.2.0.js" />
+    <Content Include="Scripts\knockout-delegatedEvents.js" />
+    <Content Include="Scripts\knockout-delegatedEvents.min.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout.power.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\less-1.5.1.js" />
+    <Content Include="Scripts\less-1.5.1.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\ClaimsAdmin\CreateClaim.cshtml" />
+    <Content Include="Views\ClaimsAdmin\Index.cshtml" />
+    <Content Include="Views\ClaimsAdmin\SetUserClaim.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\SignOut.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutDevOops.cshtml" />
+    <Content Include="Views\Timer\Index.cshtml" />
+    <Content Include="Scripts\knockout.power.src.coffee" />
+    <Content Include="Scripts\knockout.power.js.map" />
+    <Content Include="Views\Schedule\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19612</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:19612/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
