@@ -60,6 +60,7 @@ namespace LogToday
 
             bundles.Add(new ScriptBundle("~/assets/bundles/scriptbase").Include(
                         "~/plugins/jquery/jquery-{version}.js",
+                        "~/plugins/jquery/jquery-{version}.intellisense.js",
                         "~/plugins/jquery-ui/jquery-ui.js",
                         "~/plugins/bootstrap/js/bootstrap.js",
                         "~/plugins/justified-gallery/jquery.justifiedGallery.js",
@@ -68,6 +69,23 @@ namespace LogToday
                         "~/plugins/knockout/knockout-{version}.js",
                         "~/plugins/moment/moment-with-locales.js",
                         "~/assets/js/template.js"));
+
+            //mPurpose
+            bundles.Add(new StyleBundle("~/assets/bundles/cssbasepurpose").Include(
+                        "~/plugins/bootstrap/css/bootstrap.css",
+                        "~/assets/css/icomoon-social.css",
+                        "~/plugins/leaflet/leaflet.css"));
+
+            bundles.Add(new ScriptBundle("~/assets/bundles/scriptbasepurpose").Include(
+                        "~/plugins/jquery/jquery-{version}.js",
+                        "~/plugins/jquery/jquery-{version}.intellisense.js",
+                        "~/plugins/bootstrap/js/bootstrap.js",
+                        "~/plugins/leaflet/leaflet-src.js",
+                        "~/assets/js/jquery.fitvids.js",
+                        "~/assets/js/jquery.sequence-min.js",
+                        "~/assets/js/jquery.bxslider.js",
+                        "~/assets/js/main-menu.js",
+                        "~/assets/js/template_mPurpose.js"));
 
             // VIEWS BUNDLES
             bundles.Add(new StyleBundle(ViewsBundles.CSS_TIMER_INDEX).Include(
