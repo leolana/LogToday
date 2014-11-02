@@ -213,18 +213,25 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-TG.LogToday-20140906011915.mdf" />
+    <Content Include="App_Data\aspnet-TG.LogToday-20140906011915_log.ldf">
+      <DependentUpon>aspnet-TG.LogToday-20140906011915.mdf</DependentUpon>
+    </Content>
+    <Content Include="assets\css\app.css" />
     <Content Include="assets\css\app\views.schedule.index.css" />
+    <Content Include="assets\css\bootstrap-social.css" />
     <Content Include="assets\css\coming-soon-social.css" />
     <Content Include="assets\css\icomoon-social.css" />
     <Content Include="assets\css\leaflet.css" />
     <Content Include="assets\css\leaflet.ie.css" />
-    <Content Include="assets\css\main-green.css" />
-    <Content Include="assets\css\main-grey.css" />
-    <Content Include="assets\css\main-orange.css" />
-    <Content Include="assets\css\main-red.css" />
-    <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\mPurpose-green.css" />
+    <Content Include="assets\css\mPurpose-grey.css" />
+    <Content Include="assets\css\mPurpose-orange.css" />
+    <Content Include="assets\css\mPurpose-red.css" />
+    <Content Include="assets\css\mPurpose.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\app\views.timer.index.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\img\8962691008_7f489395c9_m.jpg" />
     <Content Include="assets\img\8985207189_01ea27882d_m.jpg" />
@@ -529,6 +536,7 @@
     <Content Include="assets\img\logos\sony.png" />
     <Content Include="assets\img\logos\vimeo.png" />
     <Content Include="assets\img\logos\yahoo.png" />
+    <Content Include="assets\img\LogToday-logo.png" />
     <Content Include="assets\img\mPurpose-logo.png" />
     <Content Include="assets\img\news1.jpg" />
     <Content Include="assets\img\news2.jpg" />
@@ -677,6 +685,9 @@
     <Content Include="plugins\flot\jquery.flot.resize.js" />
     <Content Include="plugins\flot\jquery.flot.time.js" />
     <Content Include="plugins\flot\LICENSE.txt" />
+    <Content Include="plugins\font-awesome\css\font-awesome.css" />
+    <Content Include="plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="plugins\fullcalendar\fullcalendar.css" />
     <Content Include="plugins\fullcalendar\fullcalendar.js" />
     <Content Include="plugins\fullcalendar\fullcalendar.min.css" />
@@ -882,6 +893,40 @@
     <Content Include="assets\less\lesshat.less" />
     <Content Include="assets\less\main.less" />
     <Content Include="assets\less\variables.less" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="plugins\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="plugins\font-awesome\less\bordered-pulled.less" />
+    <Content Include="plugins\font-awesome\less\core.less" />
+    <Content Include="plugins\font-awesome\less\fixed-width.less" />
+    <Content Include="plugins\font-awesome\less\font-awesome.less" />
+    <Content Include="plugins\font-awesome\less\icons.less" />
+    <Content Include="plugins\font-awesome\less\larger.less" />
+    <Content Include="plugins\font-awesome\less\list.less" />
+    <Content Include="plugins\font-awesome\less\mixins.less" />
+    <Content Include="plugins\font-awesome\less\path.less" />
+    <Content Include="plugins\font-awesome\less\rotated-flipped.less" />
+    <Content Include="plugins\font-awesome\less\spinning.less" />
+    <Content Include="plugins\font-awesome\less\stacked.less" />
+    <Content Include="plugins\font-awesome\less\variables.less" />
+    <Content Include="plugins\font-awesome\scss\font-awesome.scss" />
+    <Content Include="plugins\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="plugins\font-awesome\scss\_core.scss" />
+    <Content Include="plugins\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="plugins\font-awesome\scss\_icons.scss" />
+    <Content Include="plugins\font-awesome\scss\_larger.scss" />
+    <Content Include="plugins\font-awesome\scss\_list.scss" />
+    <Content Include="plugins\font-awesome\scss\_mixins.scss" />
+    <Content Include="plugins\font-awesome\scss\_path.scss" />
+    <Content Include="plugins\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="plugins\font-awesome\scss\_spinning.scss" />
+    <Content Include="plugins\font-awesome\scss\_stacked.scss" />
+    <Content Include="plugins\font-awesome\scss\_variables.scss" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
     <None Include="plugins\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="plugins\jquery\jquery-2.1.1.js" />
     <Content Include="plugins\jquery\jquery-2.1.1.min.js" />
@@ -1160,9 +1205,7 @@
     <Content Include="Views\Shared\_LayoutPurpose.cshtml" />
     <Content Include="Views\Shared\_LoginPurposePartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
