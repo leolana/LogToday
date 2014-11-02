@@ -1,11 +1,24 @@
 ﻿@model LogToday.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Utilize uma conta para login.</h4>
-<hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
-    if (loginProviders.Count() == 0) {
+    var classButtonLoginProviders = new Dictionary<string, string>()
+    {
+        { "Facebook", "btn-facebook"},
+        { "Google", "btn-google-plus"},
+        { "Twitter", "btn-twitter"},
+        { "Microsoft", "btn-microsoft"}
+    };
+    var classIconLoginProviders = new Dictionary<string, string>()
+    {
+        { "Facebook", "fa-facebook"},
+        { "Google", "fa-google-plus"},
+        { "Twitter", "fa-twitter"},
+        { "Microsoft", "fa-windows"}
+    };
+    if (loginProviders.Count() == 0)
+    {
         <div>
             <p>
                 There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
@@ -13,15 +26,29 @@
             </p>
         </div>
     }
-    else {
-        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+        {
             @Html.AntiForgeryToken()
-            <div id="socialLoginList">
-                <p>
-                    @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
-                    }
-                </p>
+            <div class="social-login-buttons">
+                @foreach (AuthenticationDescription p in loginProviders)
+                {
+                    <button type="submit" class="btn btn-social  @foreach(var classButton in classButtonLoginProviders) {
+                                                     if (classButton.Key == p.AuthenticationType)
+                                                     {
+                                                         <text>@classButton.Value</text>
+                                                     }
+                                                 }" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                        <i class="fa @foreach(var classIcon in classIconLoginProviders) {
+                                         if (classIcon.Key == p.AuthenticationType)
+                                         {
+                                            <text>@classIcon.Value</text>
+                                         }
+                                     }">
+                        </i> @p.AuthenticationType
+                    </button>
+                }
             </div>
         }
     }

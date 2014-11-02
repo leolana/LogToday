@@ -17,7 +17,9 @@
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="css/leaflet.ie.css" />
     <![endif]-->
-    <link rel="stylesheet" href="@Url.Content("~/assets/css/main.css")">
+    <link rel="stylesheet" href="@Url.Content("~/assets/css/mPurpose.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/css/bootstrap-social.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/css/app.css")" />
 
     <script src="@Url.Content("~/assets/js/modernizr-2.6.2-respond-1.1.0.min.js")"></script>
     @RenderSection("styles", required: false)
@@ -36,7 +38,7 @@
             </div>
             <nav id="mainmenu" class="mainmenu">
                 <ul>
-                    <li class="logo-wrapper"><a href="@Url.Action("Index", "Home", "Home")"><img src="@Url.Content("~/assets/img/mPurpose-logo.png")" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+                    <li class="logo-wrapper"><a href="@Url.Action("Index", "Home", "Home")"><img src="@Url.Content("~/assets/img/LogToday-logo.png")" alt="Multipurpose Twitter Bootstrap Template"></a></li>
                     <li class="active">
                         @Html.ActionLink("Home", "Index", "Home")
                     </li>
@@ -130,7 +132,7 @@
                     <h3>Our Latest Work</h3>
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <a href="page-portfolio-item.html"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+                            <a href="page-portfolio-item.html"><img src="@Url.Content("~/assets/img/portfolio6.jpg")" alt="Project Name"></a>
                         </div>
                     </div>
                 </div>
@@ -175,4 +177,5 @@
     <!-- Javascripts -->
     @Scripts.Render("~/assets/bundles/scriptbasepurpose")
     @RenderSection("scripts", required: false)
+</body>
 </html>

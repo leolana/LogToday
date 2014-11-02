@@ -74,7 +74,8 @@ namespace LogToday
             bundles.Add(new StyleBundle("~/assets/bundles/cssbasepurpose").Include(
                         "~/plugins/bootstrap/css/bootstrap.css",
                         "~/assets/css/icomoon-social.css",
-                        "~/plugins/leaflet/leaflet.css"));
+                        "~/plugins/leaflet/leaflet.css",
+                        "~/plugins/font-awesome/css/font-awesome.css"));
 
             bundles.Add(new ScriptBundle("~/assets/bundles/scriptbasepurpose").Include(
                         "~/plugins/jquery/jquery-{version}.js",

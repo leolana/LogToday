@@ -63,12 +63,12 @@ namespace LogToday.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
         [Display(Name = "E-mail")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Senha é obrigatório.")]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
@@ -79,17 +79,18 @@ namespace LogToday.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage="O campo E-mail é obrigatório.")]
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="O campo Senha é obrigatório.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "O campo Confirmar Senha é obrigatório.")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Senha")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "As senhas não se coincidem.")]
