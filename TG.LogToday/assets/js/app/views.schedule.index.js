@@ -5,10 +5,9 @@ app = (function (app) {
 
     app.views = (function (views) {
 
-        views.OpenModalBox = function (header, inner, bottom) {
+        views.OpenModalBox = function (header, bottom) {
             var modalbox = $('#modalbox');
             modalbox.find('.modal-header-name span').html(header);
-            modalbox.find('.devoops-modal-inner').html(inner);
             modalbox.find('.devoops-modal-bottom').html(bottom);
             modalbox.fadeIn('fast');
             $('body').addClass("body-expanded");
@@ -17,12 +16,49 @@ app = (function (app) {
             var modalbox = $('#modalbox');
             modalbox.fadeOut('fast', function () {
                 modalbox.find('.modal-header-name span').children().remove();
-                modalbox.find('.devoops-modal-inner').children().remove();
                 modalbox.find('.devoops-modal-bottom').children().remove();
                 $('body').removeClass("body-expanded");
             });
         };
-        views.drawCalendar = function() {
+        views.DateDiff = function Diferenca(dtInicio, dtFim) {
+            var inicio = new Date(dtInicio);
+            var fim = new Date(dtFim);
+            var data = new Date();
+            var minutos = null;
+            var horas = null;
+
+            if (inicio.getMinutes() > fim.getMinutes()) {
+                minutos = 60 - inicio.getMinutes();
+                minutos = minutos + fim.getMinutes();
+                fim.setHours(fim.getHours() - 1);
+            }
+            else {
+                minutos = fim.getMinutes() - inicio.getMinutes();
+            }
+            if (inicio.getHours() <= fim.getHours())
+                horas = fim.getHours() - inicio.getHours();
+            else {
+                horas = 24 - inicio.getHours();
+                horas = horas + fim.getHours();
+            }
+            if (minutos >= 60) {
+                minutos = minutos - 60;
+                horas += 1;
+            }
+            data.setMinutes(minutos);
+            data.setHours(horas);
+            return data;
+        },
+        views.formataAgendaWeek = function (e) {
+            return "<b>" + e.client + "</b><br />" + e.project + "<br />" + e.module;
+        },
+        views.formataAgendaDay = function (e) {
+            return "<b>" + e.client + " / " + e.project + " / " + e.module + " / " + e.category + "</b><br />" + e.description;
+        },
+        views.formataHora = function (e) {
+            return $.fullCalendar.formatDate(e.start, "HH:mm") + " - " + $.fullCalendar.formatDate(e.end, "HH:mm") + " (" + ($.fullCalendar.formatDate(views.DateDiff(e.start, e.end), "HH:mm")) + ")";
+        },
+        views.drawCalendar = function () {
             /* initialize the external events
             -----------------------------------------------------------------*/
             $('#external-events div.external-event').each(function () {
@@ -50,27 +86,15 @@ app = (function (app) {
                 selectable: true,
                 selectHelper: true,
                 select: function (start, end, allDay) {
-                    var form = $('<form id="event_form">' +
-                        '<div class="form-group has-success has-feedback">' +
-                        '<label">Event name</label>' +
-                        '<div>' +
-                        '<input type="text" id="newevent_name" class="form-control" placeholder="Name of event">' +
-                        '</div>' +
-                        '<label>Description</label>' +
-                        '<div>' +
-                        '<textarea rows="3" id="newevent_desc" class="form-control" placeholder="Description"></textarea>' +
-                        '</div>' +
-                        '</div>' +
-                        '</form>');
                     var buttons = $('<button id="event_cancel" type="cancel" class="btn btn-default btn-label-left">' +
                                     '<span><i class="fa fa-clock-o txt-danger"></i></span>' +
-                                    'Cancel' +
+                                    'Cancelar' +
                                     '</button>' +
                                     '<button type="submit" id="event_submit" class="btn btn-primary btn-label-left pull-right">' +
                                     '<span><i class="fa fa-clock-o"></i></span>' +
-                                    'Add' +
+                                    'Salvar' +
                                     '</button>');
-                    views.OpenModalBox('Add event', form, buttons);
+                    views.OpenModalBox('Incluir log de horas', buttons);
                     $('#event_cancel').on('click', function () {
                         views.CloseModalBox();
                     });
@@ -112,37 +136,122 @@ app = (function (app) {
                         $(this).remove();
                     }
                 },
-                eventRender: function (event, element, icon) {
+                events: [
+				{
+				    title: 'All Day Event',
+				    start: '2014-11-01',
+				    end: '2014-11-01'
+				},
+				{
+				    title: 'Aqui',
+				    start: '2014-11-0707:10',
+				    end: '2014-11-0708:10',
+				    project: 'iNeocPack',
+				    module: 'Cadastro de Fornecedores',
+				    customer: 'NeocPack',
+				    description: 'Realizado o desenvolvimento...'
+				},
+				{
+				    id: 670,
+				    title: 'Desenvolvimento',
+				    start: '2014-11-09T16:15:15',
+				    end: '2014-11-09T16:15:15',
+				    color: '#257e4a'
+				},
+				{
+				    id: 590,
+				    title: 'Desenvolvimento',
+				    start: '2014-11-16T16:15:00',
+				    end: '2014-11-16T16:15:00'
+				},
+				{
+				    title: 'Análise',
+				    start: '2014-11-1107:15:00',
+				    end: '2014-11-13'
+				},
+				{
+				    title: 'Levantamento',
+				    start: '2014-11-12T10:30:00',
+				    end: '2014-11-12T12:30:00'
+				},
+				{
+				    title: 'Levantamento',
+				    start: '2014-11-12T12:15:00',
+				    color: '#257e4a'
+				},
+				{
+				    title: 'Levantamento',
+				    start: '2014-11-12T14:30:00',
+				    color: '#257e4a'
+				},
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-12T17:30:00',
+				    color: '#257e4a'
+				},
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-12T20:15:00',
+				    color: '#257e4a'
+				},
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-13T0715:00',
+				    color: '#257e4a'
+				},
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-2807:15:00'
+				},
+                {
+                    title: 'Desenvolvimento',
+                    start: '2014-11-12T17:30:00',
+                    color: '#257e4a'
+                },
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-12T20:15:00',
+				    color: '#257e4a'
+				},
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-13T0715:00',
+				    color: '#257e4a'
+				},s
+				{
+				    title: 'Desenvolvimento',
+				    start: '2014-11-2807:15:00'
+				}
+                ],
+                eventRender: function (event, element, view) {
                     if (event.description != "") {
                         element.attr('title', event.description);
                     }
+                    //if (view.name != 'month') {
+                    //    element.find('.fc-event-time').html(views.formataHora(event));
+                    //    if (view.name == 'agendaDay') {
+                    //        element.find('.fc-event-title').html(views.formataAgendaDay(event));
+                    //    }
+                    //    else {
+                    //        element.find('.fc-event-title').html(views.formataAgendaWeek(event));
+                    //    }
+
+                    //}
                 },
                 eventClick: function (calEvent, jsEvent, view) {
-                    var form = $('<form id="event_form">' +
-                        '<div class="form-group has-success has-feedback">' +
-                        '<label">Event name</label>' +
-                        '<div>' +
-                        '<input type="text" id="newevent_name" value="' + calEvent.title + '" class="form-control" placeholder="Name of event">' +
-                        '</div>' +
-                        '<label>Description</label>' +
-                        '<div>' +
-                        '<textarea rows="3" id="newevent_desc" class="form-control" placeholder="Description">' + calEvent.description + '</textarea>' +
-                        '</div>' +
-                        '</div>' +
-                        '</form>');
                     var buttons = $('<button id="event_cancel" type="cancel" class="btn btn-default btn-label-left">' +
                                     '<span><i class="fa fa-clock-o txt-danger"></i></span>' +
-                                    'Cancel' +
+                                    'Cancelar' +
                                     '</button>' +
                                     '<button id="event_delete" type="cancel" class="btn btn-danger btn-label-left">' +
                                     '<span><i class="fa fa-clock-o txt-danger"></i></span>' +
-                                    'Delete' +
+                                    'Excluir' +
                                     '</button>' +
                                     '<button type="submit" id="event_change" class="btn btn-primary btn-label-left pull-right">' +
                                     '<span><i class="fa fa-clock-o"></i></span>' +
-                                    'Save changes' +
+                                    'Salvar alterações' +
                                     '</button>');
-                    views.OpenModalBox('Change event', form, buttons);
+                    views.OpenModalBox('Editar log de horas', buttons);
                     $('#event_cancel').on('click', function () {
                         views.CloseModalBox();
                     });

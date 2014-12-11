@@ -55,6 +55,7 @@ namespace LogToday
                         "~/plugins/fullcalendar/fullcalendar.css",
                         "~/plugins/xcharts/xcharts.css",
                         "~/plugins/select2/select2.css",
+                        "~/plugins/select2/select2-bootstrap.css",
                         "~/plugins/justified-gallery/justifiedGallery.css",
                         "~/assets/css/style.css"));
 
@@ -66,6 +67,7 @@ namespace LogToday
                         "~/plugins/justified-gallery/jquery.justifiedGallery.js",
                         "~/plugins/tinymce/tinymce.min.js",
                         "~/plugins/tinymce/jquery.tinymce.min.js",
+                        "~/plugins/select2/select2.js",
                         "~/plugins/knockout/knockout-{version}.js",
                         "~/plugins/moment/moment-with-locales.js",
                         "~/assets/js/template.js"));

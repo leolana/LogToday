@@ -1,17 +1,19 @@
-﻿using System;
+﻿using LogToday.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LogToday.LogToday.Controllers
+namespace LogToday.Controllers
 {
     public class TimerController : Controller
     {
         // GET: Timer
         public ActionResult Index()
         {
-            return View();
+            var model = new TimerIndexViewModel();
+            return View(model);
         }
     }
 }

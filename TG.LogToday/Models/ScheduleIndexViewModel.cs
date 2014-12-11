@@ -18,5 +18,24 @@ namespace LogToday.Models
         public DateTime InitialTime { get; set; }
         public DateTime FinalTime { get; set; }
         public string Description { get; set; }
+
+        public ScheduleIndexViewModel()
+        {
+            var customers = new Dictionary<int, string>
+            {
+                {1, "NeoPack"}
+            };
+            var projects = new Dictionary<int, string>
+            {
+                {1, "Neopack - Custos"}
+            };
+            var modules = new Dictionary<int, string>
+            {
+                {1, "Cadastro de fornecedores"}
+            };
+            Projects = new SelectList(projects, "Key", "Value");
+            Customers = new SelectList(customers, "Key", "Value");
+            Modules = new SelectList(modules, "Key", "Value");
+        }
     }
 }

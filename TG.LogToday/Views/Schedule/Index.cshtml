@@ -5,9 +5,11 @@
 }
 
 @section styles{
-    <link rel="stylesheet" media="print" href="@Url.Content("~/plugins/fullcalendar/fullcalendar.print.css")"/>
+    <link rel="stylesheet" media="print" href="@Url.Content("~/plugins/fullcalendar/fullcalendar.print.css")" />
     <style>
-
+        #modalbox .devoops-modal-inner {
+            padding: 0 0 15px 0;
+        }
     </style>
 }
 
@@ -43,6 +45,60 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div id="modalbox">
+    <div class="devoops-modal">
+        <div class="devoops-modal-header">
+            <div class="modal-header-name">
+                <span>Basic table</span>
+            </div>
+            <div class="box-icons">
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="devoops-modal-inner">
+            <form id="event_form">
+                <div class="form-group has-success has-feedback">
+                    <div class="col-sm-12">
+                        @Html.LabelFor(model => model.CustomerId, "Cliente")
+                        @Html.DropDownListFor(model => model.CustomerId, Model.Customers, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <div class="col-sm-12">
+                        @Html.LabelFor(model => model.ProjectId, "Projeto")
+                        @Html.DropDownListFor(model => model.ProjectId, Model.Projects, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <div class="col-sm-12">
+                        @Html.LabelFor(model => model.ModuleId, "Módulo")
+                        @Html.DropDownListFor(model => model.ModuleId, Model.Modules, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.InitialTime, "Início")
+                        @Html.TextBoxFor(model => model.InitialTime, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.FinalTime, "Fim")
+                        @Html.TextBoxFor(model => model.FinalTime, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <div class="col-sm-12">
+                        @Html.LabelFor(model => model.Description, "Descrição")
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Descrição", id = "newevent_desc", rows = "3" })
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="devoops-modal-bottom">
         </div>
     </div>
 </div>

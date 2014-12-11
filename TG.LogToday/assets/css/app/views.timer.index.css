@@ -291,6 +291,26 @@ ol, ul {
             text-align: right;
         }
 
+
+        .details-header-list > li .time-container > span, .time-entries-list > li .description-container > span {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -webkit-flexbox;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            margin-right: 20px;
+            line-height: normal;
+            padding: 16px 0;
+        }
+
+        .details-header-list > li .time-container > span, .time-entries-list > li .text-container > span.module > span{
+            font-size: 14px;
+        }
+
 .unsynced {
     color: #888;
     padding: 20px 15px 15px;

@@ -44,7 +44,7 @@
                             @Html.TextBoxFor(model => model.Description, new { @class = "form-control input-lg", placeholder = "No que você está trabalhando agora?" })
                         </div>
                         <div class="col-xs-3 col-sm-3">
-                            @Html.LabelFor(model => model.Description, "Selecione o seu módulo", new { @class = "sr-only" })
+                            @Html.LabelFor(model => model.ModuleId, "Selecione o seu módulo", new { @class = "sr-only" })
                             @Html.TextBoxFor(model => model.ModuleId, new { @class = "form-control input-lg", placeholder = "Selecione o seu módulo" })
                         </div>
                         <div class="col-xs-3 col-sm-3 col-md-3">
@@ -110,16 +110,12 @@
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-left" role="menu">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a></li>
+                                                            <li><a href="#">Excluir</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="date-container">
-                                                    <span class="title">Sun, 12 Oct</span>
+                                                    <span class="title">Segunda-feira, 12 de Outubro</span>
                                                     <span class="super">1 h 35 min</span>
                                                 </div>
                                             </header>
@@ -147,25 +143,21 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <ul class="dropdown-menu dropdown-menu-left" role="menu">
-                                                                        <li><a href="#">Action</a></li>
-                                                                        <li><a href="#">Another action</a></li>
-                                                                        <li><a href="#">Something else here</a></li>
-                                                                        <li class="divider"></li>
-                                                                        <li><a href="#">Separated link</a></li>
+                                                                        <li><a href="#">Excluir</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-5" style="padding-left: 0px;">
-                                                            <div tabindex="7" class="text-container popdown-host for-autocomplete">
-                                                                <span title="ddedqweqweqwewqe">ddedqweqweqwewqe</span>
+                                                            <div tabindex="7" class="description-container popdown-host for-autocomplete">
+                                                                <span title="Realizado o desenvolvimento do CRUD do cadastro">Realizado o desenvolvimento do CRUD do cadastro de fornecedores</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-3">
                                                             <div tabindex="8" class="text-container popdown-host for-projects ">
-                                                                <a class="module">
+                                                                <span class="module">
                                                                     <span class="label label-success" title="Teste">Teste</span>
-                                                                </a>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-3">
@@ -211,15 +203,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-5" style="padding-left: 0px;">
-                                                            <div tabindex="7" class="text-container popdown-host for-autocomplete">
-                                                                <span title="ddedqweqweqwewqe">ddedqweqweqwewqe</span>
+                                                            <div tabindex="7" class="description-container popdown-host for-autocomplete">
+                                                                <span title="Realizado parcialmente o desenvolvimento">Realizado parcialmente o desenvolvimento da tela de clientes</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-3">
                                                             <div tabindex="8" class="text-container popdown-host for-projects ">
-                                                                <a class="module">
-                                                                    <span class="label label-success" title="Teste">Teste</span>
-                                                                </a>
+                                                                <span class="module">
+                                                                    <span class="label label-success" title="Cadastro de fornecedores">Cadastro de fornecedores</span>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-3">
@@ -256,6 +248,11 @@
 
 @section scripts {
     @Scripts.Render(LogToday.BundleConfig.ViewsBundles.JS_TIMER_INDEX)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ModuleId").select2();
+        });
+    </script>
 }
 
 
